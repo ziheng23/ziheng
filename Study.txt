@@ -1,0 +1,51 @@
+二叉搜索树中第K小的元素
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> fin;
+    void kth(TreeNode* root) {
+        if(root!=NULL)
+        {
+            kth(root->left);
+                fin.push_back(root->val);
+            kth(root->right);
+   
+        }
+
+    }
+    
+        int kthSmallest(TreeNode* root,int k){
+        kth(root);
+        return fin[k-1];
+        
+    }
+    
+};
+整数反转
+
+int reverse(int x) {
+       string s = to_string(x);     
+        char temp;
+        int ss;
+        for(int i=0;i<s.size()/2;i++){
+            temp=s[i];
+            s[i]=s[s.size()-i-1];
+            s[s.size()-i-1]=temp;
+        }
+if(s==INT_MAX)
+            return 0;
+        stringstream ss1(s);     
+        ss1>>ss;              
+
+        if(x<0)
+            ss=-ss;
+        return ss;
+本来打算用另一个string来装s的反转，但是总是输出不出来，应该是字符串大小匹配的问题，就直接在a自身上反转了。还有就是没有注意到要判断s大小。
