@@ -1,0 +1,53 @@
+判断是否为回文数
+class Solution {
+public:
+    bool isPalindrome(int x) {
+      string s = to_string(x);
+      string s1 = s;
+        char temp;
+        for(int i=0;i<s.size()/2;i++){
+            temp=s[i];
+            s[i]=s[s.size()-i-1];
+            s[s.size()-i-1]=temp;
+        }
+        
+        if(s1==s)
+            return true;
+        else
+            return false;
+        
+    }
+};
+这个执行用时和内存消耗都不错，看评论有人用了String.valueOf(int)这个形式，看起来很好用，查了一下原来是JAVA的函数。整体上和上个整数反转差不多。
+用string的reserve应该会更简单点。
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+无重复字符的最长子串
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int re;
+        int r;
+        string fin;
+        for(int i=0 ; i<s.length(); i++)
+        {
+            for(int j=i ; j<s.length();j++)
+            {
+                if(fin.find(s[j])==string::npos)
+                {
+                    fin.push_back(s[j]);   
+                    r= fin.length(); 
+                }
+                else 
+                    break;
+  
+            }
+            fin="";
+            if(re<r)
+                re=r;       
+        }
+        return re;
+    }
+};
+很奇怪，这个代码在力扣上执行没有问题，一提交就出错。我自己用ubuntu运行了一下，如果字符的字串并非出现在字符串开头，就会出现混乱，显示随机数。
+不应该是内存的问题，看了一下力扣上的评论，没有人用我这种暴力的解法。百思不得其解。
