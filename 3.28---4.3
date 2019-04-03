@@ -184,3 +184,21 @@ void DrawRectangle(cv::Mat& img, cv::Rect box)
 ----------------------------------------------------------------------------------------------------------------------------------------
 上文中关于string出现的错误，用vector容器代替string试了一下，同样会出现段错误，但出现错误情况变少，10次运行中会出现一次错误。
 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Opencv ：：cvtColor函数测试
+
+#include<iostream>
+#include<opencv2/opencv.hpp>
+using namespace std;
+using namespace cv;
+
+
+int main()
+{
+    Mat srcImage=imread("timg.jpeg",1) , dstImage;
+    cvtColor(srcImage,dstImage,COLOR_BGR2HLS);
+    imshow("效果图",dstImage);
+    waitKey();
+    return 0;
+}
+
