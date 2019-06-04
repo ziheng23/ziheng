@@ -269,5 +269,20 @@ public:
     return fin;
     }
 };
+---------------------------------------增减字符串匹配------------------------------------
+class Solution {
+public:
+    vector<int> diStringMatch(string S) {
+        vector<int> N;
+        int max = S.length(),min = 0,len=max;
+        
+        for(int i=0;i<len;i++){
+            if(S[i]=='I')  N.push_back(min++);
+            else        N.push_back(max--);
+        }
+        N.push_back((min+max)/2);
+        return N;
+    }
+};
 
 
