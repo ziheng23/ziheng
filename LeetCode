@@ -256,5 +256,18 @@ public:
     }
         
 };
+-----------------------阶乘后的零----------------------------------------
+class Solution {
+public:
+    int trailingZeroes(int n) {
+      int fin = 0;
+        while(n>=5)
+        {
+            fin = fin + n/5;
+            n=n/5;
+        }
+    return fin;
+    }
+};
 
 
